@@ -1,0 +1,10 @@
+<div class="cps-search-typeahead-container">
+  <input #typeaheadInput
+         type="search"
+         class="cps-search-typeahead-input"
+         name="typeahead-input"
+         autofocus="true"
+         [(ngModel)]="searchTerm"
+         (input)="onInputChanged($event)">
+  <cps-city-search-results-overlay *ngIf="isResultVisible"></cps-city-search-results-overlay>
+</div>

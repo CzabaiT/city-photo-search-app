@@ -1,0 +1,67 @@
+@import '../../search-variables';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+
+main {
+  height: 100%;
+  width: 100%;
+}
+
+cps-search-instruction {
+  grid-area: search-instruction;
+}
+
+cps-city-search-typeahead {
+  grid-area: search-typeahead;
+}
+
+cps-photo-search-button {
+  grid-area: search-button;
+}
+
+.cps-search-container {
+  /* Common part */
+  font-family: 'Source Sans Pro', monospace, sans-serif;
+  font-weight: 600;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+
+  padding: 0 5% 5% 5%;
+  background: $dark-background-color;
+
+  /* Device dependent part */
+  @media #{$device-monitor} {
+    font-size: 1.2em;
+
+    grid-template-rows: auto;
+    grid-template-areas:
+      'search-instruction search-instruction search-instruction'
+      'search-typeahead search-typeahead search-button';
+
+    width: 70%;
+    max-width: 1000px;
+    margin: 5% auto;
+  }
+
+  @media #{$device-tablet} {
+    grid-template-rows: auto calc(13 * #{$list-element-height}) auto;
+    grid-template-areas:
+      'search-instruction search-instruction search-instruction'
+      'search-typeahead search-typeahead search-typeahead'
+      '. search-button .';
+
+    width: 70%;
+    max-width: 800px;
+    margin: 5% auto;
+  }
+
+  @media #{$device-phone} {
+    grid-template-rows: auto calc(13 * #{$list-element-height}) auto;
+    grid-template-areas:
+      'search-instruction search-instruction search-instruction'
+      'search-typeahead search-typeahead search-typeahead'
+      '. search-button .';
+  }
+}

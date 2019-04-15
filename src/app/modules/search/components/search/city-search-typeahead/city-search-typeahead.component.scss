@@ -1,0 +1,19 @@
+@import '../../../search-variables';
+
+.cps-search-typeahead-container {
+  height: $typeahead-height;
+  width: 100%;
+  position: relative;
+}
+
+.cps-search-typeahead-input {
+  height: inherit;
+  width: inherit;
+  border: none;
+  padding-left: 0.4em;
+
+  &:focus {
+    outline: 0;
+    border: 1px solid $info-color;
+  }
+}

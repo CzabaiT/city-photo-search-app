@@ -1,0 +1,41 @@
+@import '../../../search-variables';
+
+.cps-search-button-container {
+  display: flex;
+  justify-content: center;
+  @media #{$device-monitor} {
+    justify-content: flex-end;
+  }
+  height: $typeahead-height;
+}
+
+.cps-search-button {
+  font-weight: 400;
+
+  height: inherit;
+  width: 50%;
+  min-width: 9em;
+
+  border: 1px solid $submit-color;
+  background-color: transparent;
+  color: $light-background-color;
+  background: {
+    image: linear-gradient(to right, $submit-color 50%, transparent 50%);
+    position: 100% 0%;
+    size: 210%;
+  }
+  transition: background 100ms ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: 0;
+    border: 2px solid $submit-color;
+  }
+
+  &:active {
+    background-position: 0 10%;
+  }
+}

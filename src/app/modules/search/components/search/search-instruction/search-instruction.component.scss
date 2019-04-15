@@ -1,0 +1,41 @@
+@import '../../../search-variables';
+
+.cps-city-status-bar-container {
+  transition: background 0.5s ease;
+  width: 100%;
+  background: $default-color;
+
+  &.notice {
+    background: $main-color;
+  }
+  &.info {
+    background: $info-color;
+  }
+  &.error {
+    background: $error-color;
+  }
+}
+
+.cps-city-status-bar-image {
+  display: block;
+  width: 100%;
+}
+
+.cps-search-instructions-container {
+  background: $dark-background-color;
+}
+
+.cps-search-instruction {
+  transition: color 0.5s ease;
+  color: $default-color;
+
+  &.notice {
+    color: $main-color;
+  }
+  &.info {
+    color: $info-color;
+  }
+  &.error {
+    color: $error-color;
+  }
+}

@@ -1,0 +1,17 @@
+/* Media Query Definitions */
+$device-monitor: 'screen and (min-width: 1025px)';
+$device-tablet: 'screen and (min-width: 768px) and (max-width: 1024px)';
+$device-phone: 'screen and (min-width: 320px) and (max-width: 767px)';
+
+/* Colors */
+$light-background-color: #fff;
+$dark-background-color: #000;
+$default-color: #f0f1f2;
+$main-color: #9baab4;
+$info-color: #327fa8;
+$submit-color: #1b9180;
+$error-color: #e64829;
+
+/* Sizes */
+$typeahead-height: 40px;
+$list-element-height: 1.3em;

@@ -1,0 +1,15 @@
+<div [ngSwitch]="searchStatus"
+     class="cps-search-result-list-container">
+  <ul *ngSwitchCase="searchStatusEnum.Found"
+      class="cps-search-result-list">
+    <li *ngFor="let city of cities; let i = index;"
+        value="this.city"
+        (click)="onCitySelected(city.name)">
+      {{ city.name }}
+    </li>
+  </ul>
+  <ul *ngSwitchCase="searchStatusEnum.NotFound"
+      class="cps-search-result-list">
+    <li>No result found</li>
+  </ul>
+</div>
