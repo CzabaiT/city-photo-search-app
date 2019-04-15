@@ -27,7 +27,7 @@
  **URL:** host/citysearch?searchTerm=xyz /GET
  
 | case               | statusCode | response                                                          |
-|:-------------------|:---------- |:----------------------------------------------------------------. | 
+|:-------------------|:---------- |:----------------------------------------------------------------- | 
 | result found       | 200        | list of City object                                               |
 | not found          | 200        | empty list                                                        |
 | missing searchTerm | 400        | {"statusCode":400,"message":"Provide searchTerm in query string"} |
