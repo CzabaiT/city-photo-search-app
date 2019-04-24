@@ -10,26 +10,30 @@ import { environment } from '../../../../environments/environment';
 })
 export class CitiesService {
   private citiesSource = new BehaviorSubject<City[]>([]);
-  currentCities = this.citiesSource.asObservable();
 
-  private storedCities: City[];
+  constructor(private http: HttpClient, private instructionService: InstructionService) {}
 
-  constructor(private http: HttpClient, private instructionService: InstructionService) {
-    this.storedCities = JSON.parse(localStorage.getItem('cities')) || [];
+  currentCities() {
+    return this.citiesSource.asObservable();
   }
 
-  changeCities(searchTerm: string): void {
+  getCities(searchTerm: string): Promise<any> {
     let params = new HttpParams();
     params = params.append('searchTerm', searchTerm);
+    return this.http.get(environment.apiUrl + '/citysearch', { params }).toPromise();
+  }
 
+  changeCities(searchTerm: string): Promise<any> {
     this.instructionService.sendInstruction('loading');
 
-    this.http.get(environment.apiUrl + '/citysearch', { params }).subscribe(
-      (cities: City[]) => {
+    return this.getCities(searchTerm)
+      .then((cities: City[]) => {
         this.citiesSource.next(cities);
         this.instructionService.cleanInstruction();
-      },
-      error => alert(error.message || 'Oops something went wrong')
-    );
+      })
+      .catch(error => {
+        this.instructionService.cleanInstruction();
+        alert(error.message || 'Oops something went wrong');
+      });
   }
 }

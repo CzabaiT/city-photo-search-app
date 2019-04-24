@@ -1,12 +1,40 @@
-import { TestBed } from '@angular/core/testing';
-
 import { TypeaheadService } from './typeahead.service';
+import { Typeahead } from '../shared/models/typehead.model';
 
 describe('TypeaheadService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let typeaheadService: TypeaheadService;
 
-  it('should be created', () => {
-    const service: TypeaheadService = TestBed.get(TypeaheadService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    typeaheadService = new TypeaheadService();
+  });
+
+  it('#changeTypeahead should inform subscriber', done => {
+    const expectedTypeahead = {
+      inputValue: 'test',
+      isCitySelected: true,
+    };
+
+    typeaheadService.changeTypeahead(expectedTypeahead);
+
+    typeaheadService.currentTypeahead().subscribe((typeahead: Typeahead) => {
+      expect(typeahead).toEqual(expectedTypeahead);
+    });
+
+    done();
+  });
+
+  it('#resetTypeahead should inform subscriber', done => {
+    const expectedTypeahead = {
+      inputValue: '',
+      isCitySelected: false,
+    };
+
+    typeaheadService.resetTypeahead();
+
+    typeaheadService.currentTypeahead().subscribe((typeahead: Typeahead) => {
+      expect(typeahead).toEqual(expectedTypeahead);
+    });
+
+    done();
   });
 });

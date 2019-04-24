@@ -1,10 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SearchInstructionComponent } from './search-instruction.component';
 
 describe('SearchInstructionComponent', () => {
-  let component: SearchInstructionComponent;
-  let fixture: ComponentFixture<SearchInstructionComponent>;
+  let instructionComponent: SearchInstructionComponent;
+  let instructionFixture: ComponentFixture<SearchInstructionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -13,12 +12,12 @@ describe('SearchInstructionComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchInstructionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    instructionFixture = TestBed.createComponent(SearchInstructionComponent);
+    instructionComponent = instructionFixture.componentInstance;
+    instructionFixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create the component', () => {
+    expect(instructionComponent).toBeTruthy();
   });
 });

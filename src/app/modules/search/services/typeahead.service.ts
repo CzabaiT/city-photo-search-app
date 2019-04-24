@@ -10,9 +10,12 @@ export class TypeaheadService {
     inputValue: '',
     isCitySelected: false,
   });
-  currentTypeahead = this.typeaheadSource.asObservable();
 
   constructor() {}
+
+  currentTypeahead() {
+    return this.typeaheadSource.asObservable();
+  }
 
   changeTypeahead(typeahead: Typeahead) {
     this.typeaheadSource.next(typeahead);

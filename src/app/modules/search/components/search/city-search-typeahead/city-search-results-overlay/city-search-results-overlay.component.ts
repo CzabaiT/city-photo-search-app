@@ -19,7 +19,7 @@ export class CitySearchResultsOverlayComponent implements OnInit, OnDestroy {
   constructor(private citiesService: CitiesService, private typeaheadService: TypeaheadService) {}
 
   ngOnInit() {
-    this.citiesSubscription = this.citiesService.currentCities.subscribe((result: City[]) => {
+    this.citiesSubscription = this.citiesService.currentCities().subscribe((result: City[]) => {
       this.cities = result;
       this.searchStatus = result.length > 0 ? SearchStatus.Found : SearchStatus.NotFound;
     });

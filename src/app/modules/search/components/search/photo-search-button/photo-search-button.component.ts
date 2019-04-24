@@ -21,9 +21,9 @@ export class PhotoSearchButtonComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.typeaheadSubscription = this.typeaheadService.currentTypeahead.subscribe(
-      typeahead => (this.typeahead = typeahead)
-    );
+    this.typeaheadSubscription = this.typeaheadService
+      .currentTypeahead()
+      .subscribe(typeahead => (this.typeahead = typeahead));
   }
 
   onClick() {
