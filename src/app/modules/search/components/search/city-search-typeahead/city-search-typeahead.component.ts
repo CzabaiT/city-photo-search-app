@@ -12,7 +12,7 @@ import { environment } from '../../../../../../environments/environment';
 })
 export class CitySearchTypeaheadComponent implements OnInit, OnDestroy {
   @ViewChild('typeaheadInput') typeaheadInput: ElementRef;
-  typeahead: Subscription;
+  typeaheadSubscription: Subscription;
   MINIMUM_SEARCH_TERM_LENGTH = environment.minimumSearchTermLength;
   isResultVisible: boolean;
   searchTerm = '';
@@ -20,7 +20,7 @@ export class CitySearchTypeaheadComponent implements OnInit, OnDestroy {
   constructor(private citiesService: CitiesService, private typeaheadService: TypeaheadService) {}
 
   ngOnInit() {
-    this.typeahead = this.typeaheadService.currentTypeahead.subscribe(typeahead => {
+    this.typeaheadSubscription = this.typeaheadService.currentTypeahead().subscribe(typeahead => {
       this.searchTerm = typeahead.inputValue;
       this.setFocus(this.typeaheadInput);
     });
@@ -45,6 +45,6 @@ export class CitySearchTypeaheadComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.typeahead.unsubscribe();
+    this.typeaheadSubscription.unsubscribe();
   }
 }

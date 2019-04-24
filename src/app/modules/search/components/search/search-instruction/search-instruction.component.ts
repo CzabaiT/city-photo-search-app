@@ -21,15 +21,15 @@ export class SearchInstructionComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.instructionSubscription = this.instructionService.currentInstruction.subscribe(
-      (instruction: Instruction) => {
+    this.instructionSubscription = this.instructionService
+      .currentInstruction()
+      .subscribe((instruction: Instruction) => {
         this.severity = instruction.severity;
         this.message = instruction.message;
-      }
-    );
-    this.typeaheadSubscription = this.typeaheadService.currentTypeahead.subscribe(typeahead =>
-      this.instructionService.cleanInstruction()
-    );
+      });
+    this.typeaheadSubscription = this.typeaheadService
+      .currentTypeahead()
+      .subscribe(typeahead => this.instructionService.cleanInstruction());
   }
 
   ngOnDestroy() {

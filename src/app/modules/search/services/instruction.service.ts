@@ -25,9 +25,12 @@ export class InstructionService {
     },
   };
   private instructionSource = new BehaviorSubject<Instruction>(this.getInstruction('default'));
-  currentInstruction = this.instructionSource.asObservable();
 
   constructor() {}
+
+  currentInstruction() {
+    return this.instructionSource.asObservable();
+  }
 
   getInstruction(instructionName: string): Instruction {
     return this.instructions[instructionName];

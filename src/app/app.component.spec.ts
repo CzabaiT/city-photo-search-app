@@ -1,26 +1,27 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SearchModule } from './modules/search/search.module';
 
 describe('AppComponent', () => {
+  let appFixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [RouterTestingModule, SearchModule],
+      imports: [RouterTestingModule],
     }).compileComponents();
+
+    appFixture = TestBed.createComponent(AppComponent);
+    appFixture.detectChanges();
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
+    const app = appFixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it('should have main tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('main')).toBeDefined();
+    const compiled = appFixture.debugElement.nativeElement;
+    expect(compiled.querySelector('main')).toBeTruthy();
   });
 });

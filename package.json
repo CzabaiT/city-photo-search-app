@@ -8,6 +8,7 @@
     "localNode": "nodemon -r dotenv/config ./bin/www",
     "start": "ng build --prod && node ./bin/www",
     "build": "ng build",
+    "localTest": "ng test --code-coverage",
     "test": "ng test",
     "lint": "npm run prettier && ng lint",
     "prettier": "prettier \"**/*.ts\" \"**/*.scss\" --check --write",
